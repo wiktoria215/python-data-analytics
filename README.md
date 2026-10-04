@@ -8,9 +8,9 @@ A structured collection of exploratory data analysis (EDA), REST API ingestion p
 ├── climate_analytics/          # Weather API ingestion & time-series analysis
 │   ├── Projekt_Klimat.py       # Main pipeline script
 │   └── poznan_climate_2025.png # Generated trend visualization
-├── warehouse_eda/              # Inventory & supply chain data exploration
-│   ├── Analiza_EDA.py          # Exploratory analysis script
-│   └── magazyn_dane.csv        # Tabular warehouse dataset
+├── warehouse_eda/              # IT hardware pricing & inventory exploration
+│   ├── Analiza_EDA.py          # Data hygiene & EDA script
+│   └── magazyn_dane.csv        # Hardware inventory dataset
 ├── .gitignore
 └── README.md
 
@@ -26,24 +26,23 @@ An automated data pipeline extracting and analyzing historical meteorological me
 
     Engineering Decision: Migrated away from deprecated third-party wrappers to direct, resilient HTTP requests, ensuring forward compatibility with Pandas 3.x.
 
-2. Warehouse Inventory EDA (warehouse_eda)
+2. IT Hardware Inventory & Pricing EDA (warehouse_eda)
 
-Exploratory Data Analysis examining stock levels, distributions, and inventory turnover patterns.
+Exploratory Data Analysis and data hygiene pipeline evaluating IT hardware valuations and category distributions across device tiers (Business, Workstation, Office, Consumer).
 
-    Data Source: Tabular warehouse dataset (magazyn_dane.csv).
+    Data Cleaning & Imputation: Automated handling of missing telemetry via statistical mean imputation (fillna()) and dataset integrity verification (isnull(), duplicated()).
 
-    Methods: Missing value handling, grouped aggregations (groupby), anomaly detection, and distribution analysis.
+    Segmentation & Aggregation: Grouped pricing benchmarks by device category (groupby), vendor-specific string filtering (str.contains), and premium tier segmentation (> 5,000 PLN).
+
+    Visual Analytics: Multi-view Matplotlib visualizations including model price benchmarks (bar chart) and average category budget distribution (pie chart).
 
 Tech Stack
 
     Language: Python 3.11+
-
     Data Manipulation: Pandas, NumPy
-
     Networking: Requests
-
     Visualization: Matplotlib
-
+    
 Installation & Setup
 
  1. Clone the repository:
@@ -64,13 +63,11 @@ Installation & Setup
   3. Install required packages:
     Bash
 
-    pip install pandas requests matplotlib
+    pip install pandas numpy requests matplotlib
 
   4. Run the scripts:
-    Bash
-
-    # Run Climate Pipeline
+   # Run Climate Pipeline
     python climate_analytics/Projekt_Klimat.py
 
-    # Run Warehouse EDA
+   # Run Warehouse EDA
     python warehouse_eda/Analiza_EDA.py
