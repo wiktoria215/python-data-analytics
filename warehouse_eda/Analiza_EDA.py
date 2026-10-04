@@ -73,5 +73,5 @@ print(tylko_hp)
 analiza_typu.plot(kind='pie', autopct='%1.1f%%', startangle=140, colormap='Pastel1')
 import matplotlib.pyplot as plt
 plt.title('Udział typów sprzętu w budżecie (średnio)')
-plt.ylabel('') # Usuwamy brzydki opis osi Y
+plt.ylabel('')
 plt.show()
