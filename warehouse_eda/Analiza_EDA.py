@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 data = {
     'ID': [1, 2, 3, 4, 5, 6, 7],
     'Model': ['HP EliteBook', 'Lenovo ThinkPad', 'HP EliteBook', 'Dell Latitude', 'Apple MacBook', 'Lenovo ThinkPad', 'Asus VivoBook'],
-    'Cena_PLN': [4500, 5200, 4500, np.nan, 8500, 5200, 3100], # np.nan to brakująca cena!
+    'Cena_PLN': [4500, 5200, 4500, np.nan, 8500, 5200, 3100],
     'Typ': ['biznesowy', 'biznesowy', 'biznesowy', 'biurowy', 'graficzny', 'biznesowy', 'domowy']
 }
 
@@ -18,20 +18,20 @@ print("Plik magazyn_dane.csv został wygenerowany!")
 
 df = pd.read_csv('magazyn_dane.csv')
 
-# 1. Obliczamy średnią
+
 srednia = df['Cena_PLN'].mean()
 
-# Wypełniamy puste miejsca (NaN) tą średnią
+
 df['Cena_PLN'] = df['Cena_PLN'].fillna(srednia)
 
 print("\n--- PO SPRZĄTANIU ---")
-print(df.isnull().sum()) # Teraz powinno być 0 przy Cena_PLN
+print(df.isnull().sum())
 
-#
+
 print("\n--- CZY MAMY BRAKUJĄCE DANE? ---")
-print(df.isnull().sum()) # Powie Ci, w ilu miejscach brakuje np. ceny
+print(df.isnull().sum())
 
-# Szukamy duplikatów
+
 print("\n--- ILE MAMY POWTÓREK? ---")
 print(f"Liczba zduplikowanych wierszy: {df.duplicated().sum()}")
 
